@@ -1,0 +1,51 @@
+
+
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+      <div class="side-nav">
+        <app-sidebar></app-sidebar>
+      </div>
+
+      <div class="main">
+
+        <div class="container">
+          <div class="card text-center">
+            <figure>
+              <img src="assets/tempo.webp" alt="{{joueur.name}}">
+            </figure>
+
+            <p class="content"> Nom : {{joueur.name}} </p>
+            <p class="content"> Prénom : {{joueur.firstName}} </p>
+            <p class="content"> Email : {{joueur.email}} </p>
+            <p class="content"> Groupe: {{joueur.group}} </p>
+            <p class="content">Niveau : {{joueur.level}}</p>
+
+
+          <div class="buttons">
+            <button class="btn btn-outline-primary me-2" (click)="modifGroupeJoueur(joueur.id)">
+              Changer le groupe
+            </button>
+
+
+          <button class="btn btn-warning" (click)="supprimerJoueur()">
+            Supprimer le joueur
+          </button>
+          </div>
+      </div>
+        </div>
+
+<div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

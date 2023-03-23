@@ -1,0 +1,36 @@
+
+
+
+
+      <div class="email-verif" *ngIf="authService.userData as user">
+        <h2><strong>Merci pour votre inscription</strong></h2>
+        <p>
+          Nous avons envoyé un email de confirmation à
+        </p>
+        <p><strong> {{ user.email }}</strong></p>.
+
+        <p>
+          Rendez-vous dans votre boîte mail et cliquez sur le lien de validation pour vérifier votre adresse email.
+        </p>
+
+
+      <!-- Calling SendVerificationMail() method using authService Api -->
+
+        <button
+          mat-raised-button color="primary"
+          type="button"
+          class="btn btnPrimary"
+          (click)="authService.SendVerificationMail()"
+        >
+          <i class="fas fa-redo-alt"></i>
+          Envoyer la vérification par email à nouveau
+        </button>
+
+
+
+
+      <span class="redirect" [routerLink]="['/sign-in']">
+          Se connecter</span>
+
+
+      </div>

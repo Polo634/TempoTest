@@ -1,0 +1,38 @@
+
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+      <div class="side-nav">
+        <app-sidebar></app-sidebar>
+      </div>
+
+      <div class="main">
+
+        <div class="container" *ngIf="authService.userData as user">
+          <div class="card text-center">
+            <figure>
+              <img src="{{user.photoURL}}" alt="{{user.displayName}}">
+            </figure>
+
+            <p class="content"> {{user.displayName}} </p>
+            <p class="content"> {{user.email}} </p>
+
+
+
+
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

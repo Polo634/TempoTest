@@ -1,0 +1,57 @@
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+
+
+      <app-sidebar></app-sidebar>
+
+
+
+      <div class="main">
+
+
+
+        <div class="container text-center">
+
+
+
+          <div class="groupe">
+          <ng-container *ngFor="let groupe of groupes">
+
+          <table class="table table-hover">
+            <thead>
+            <h2>{{groupe.id}} </h2>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">Clicks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let joueur of joueurs">
+              <td>{{joueur.firstName}} {{joueur.name}}  </td>
+              <td>{{joueur.email}}</td>
+              <td>{{joueur.group}}</td>
+              <td>{{joueur.level}}</td>
+            </tr>
+
+            </tbody>
+
+          </table>
+
+          </ng-container>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

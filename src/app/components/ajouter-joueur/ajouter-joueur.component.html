@@ -1,0 +1,71 @@
+
+
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+      <div class="side-nav">
+        <app-sidebar></app-sidebar>
+      </div>
+
+      <div class="main ">
+
+<h2>Ajouter un joueur</h2>
+
+<form [formGroup]="angularForm">
+
+  <table class="example-full-width">
+    <tr>
+  <td><mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput
+           formControlName="name"
+    [(ngModel)]="newJoueur.name"/>
+
+
+  </mat-form-field>
+  </td>
+
+    <tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Prénom</mat-label>
+    <input matInput
+           formControlName="firstName"
+     [(ngModel)]="newJoueur.firstName"/>
+
+      </mat-form-field>
+      </td>
+
+    <tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Groupe</mat-label>
+        <input matInput
+               formControlName="group"
+         [(ngModel)]="newJoueur.group"/>
+
+      </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <button
+    mat-raised-button  (click)="savePlayer()">Soumettre</button>
+
+  <div *ngIf="submitted">
+    <h4>Nouveau joueur ajouté avec succès !</h4>
+  <button
+    class="btn-success"
+    (click)="newPlayer()">Nouveau Joueur</button>
+  </div>
+</form>
+
+      </div>
+    </div>
+  </div>
+</div>

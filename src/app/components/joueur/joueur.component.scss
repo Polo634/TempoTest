@@ -1,0 +1,18 @@
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  border: none;
+
+}
+.card img {
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+.card .buttons
+{
+  display: flex;
+  justify-content: space-between;
+}

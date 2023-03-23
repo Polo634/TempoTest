@@ -1,0 +1,53 @@
+<section>
+  <img src="assets/logoML.webp" class="mlLogo">
+  <div class="login">
+
+    <h2>Se connecter</h2>
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Email ou nom utilisateur</mat-label>
+        <input matInput [formControl]="email" required #userName>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required #userPassword>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Cacher le mot de passe'"
+                [attr.aria-password]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="inputBox">
+        <input
+          type="submit"
+          value="Connexion"
+          id="btn"
+          (click)="authService.SignIn(userName.value, userPassword.value)"
+        />
+      </div>
+
+
+      <div class="ou">
+        <h4>Ou</h4>
+      </div>
+
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <a  (click)="authService.GoogleAuth()" class="googleBox">
+        <img src="assets/icons8-google-48.png" alt="google">  Se connecter avec Google
+        </a>
+
+
+
+      <div class="group">
+        <span [routerLink]="['/forgot-password']">Mot de passe oublié ?</span>
+      <span [routerLink]="['/register-user']">S'inscrire </span>
+
+    </div>
+</div>
+</section>

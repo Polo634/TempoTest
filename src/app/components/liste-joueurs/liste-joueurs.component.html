@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+
+  <div class="header">
+    <app-header></app-header>
+  </div>
+
+  <div class="main-container">
+
+
+    <div class="side-nav">
+      <app-sidebar></app-sidebar>
+    </div>
+
+
+    <div class="main">
+
+      <button type="button" class="button" (click)="ajouterJoueur()">
+        <mat-icon>person_add</mat-icon>
+        <span class="button__text"> Ajouter un joueur </span>
+
+      </button>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Prénom Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Groupe</th>
+          <th scope="col">Niveau</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let joueur of joueurs">
+          <td><a (click)="showDetailJoueur(joueur.id)">{{joueur.firstName}} {{joueur.name}} </a> </td>
+          <td>{{joueur.email}}</td>
+          <td>{{joueur.group}}</td>
+          <td>{{joueur.level}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary me-2" (click)="modifGroupeJoueur(joueur.id)" >Modifier le groupe</button>
+            <button type="button" class="btn btn-outline-danger" (click)="supprimerJoueur(joueur.id)">Supprimer</button>
+          </td>
+
+        </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+
+

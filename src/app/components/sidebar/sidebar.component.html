@@ -1,0 +1,36 @@
+
+  <div class="nav">
+    <ul>
+
+      <li>
+        <a [routerLink]="['/accueil']" routerLinkActive="active-link">
+          <span><fa-icon [icon]="faHome"></fa-icon></span>
+          <span class="title"> Accueil </span>
+        </a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/liste-joueurs']" routerLinkActive="active-link">
+          <span> <fa-icon [icon]="faJoueurs"></fa-icon> </span>
+          <span class="title"> Participants </span>
+        </a>
+      </li>
+      <li>
+        <a (click)="authService.SignOut()" routerLinkActive="active-link">
+          <span><fa-icon [icon]="faDoor"></fa-icon></span>
+          <span class="title"> Déconnexion </span>
+        </a>
+      </li>
+
+
+      <li>
+        <a [routerLink]="['/tests']" routerLinkActive="active-link">
+          <span class="title"> Tests </span>
+        </a>
+      </li>
+
+    </ul>
+
+</div>
+
+

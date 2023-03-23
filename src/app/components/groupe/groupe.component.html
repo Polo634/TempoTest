@@ -1,0 +1,27 @@
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+      <app-sidebar></app-sidebar>
+
+      <div class="main">
+
+        <div class="container text-center">
+
+                {{groupe.id}}
+
+
+        <mat-list role="list" *ngFor="let joueur of joueurs">
+          <mat-list-item role="listitem" *ngIf="groupe.groupId == joueur.group">{{joueur.name}}</mat-list-item>
+        </mat-list>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

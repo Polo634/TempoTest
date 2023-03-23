@@ -1,0 +1,61 @@
+
+
+<div>
+  <div class="container-fluid">
+
+    <div class="header">
+      <app-header></app-header>
+    </div>
+
+    <div class="main-container">
+
+      <div class="side-nav">
+        <app-sidebar></app-sidebar>
+      </div>
+
+      <div class="main">
+
+        <div class="container">
+          <div class="card text-center">
+            <figure>
+              <img src="assets/tempo.webp" alt="{{joueur.name}}">
+            </figure>
+
+            <p class="content"> Nom : {{joueur.name}} </p>
+            <p class="content"> Prénom : {{joueur.firstName}} </p>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Groupe</mat-label>
+              <mat-select matNativeControl required [(value)]="newGroup">
+                <mat-option *ngFor="let groupe of groupes" [value]="groupe.groupId">
+                  {{groupe.groupId}}
+                </mat-option>
+              </mat-select>
+            <mat-error *ngIf="selectFormControl.hasError('requis')">Merci de choisir un groupe</mat-error>
+            </mat-form-field>
+
+            <p class="content">Niveau : {{joueur.level}}</p>
+
+            <div class="buttons">
+              <button class="btn btn-outline-primary me-2" (click)="updateGroupeJoueur()">
+                Valider
+              </button>
+
+
+              <button class="btn btn-warning" (click)="supprimerJoueur()">
+                Supprimer le joueur
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

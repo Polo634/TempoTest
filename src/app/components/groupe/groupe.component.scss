@@ -1,0 +1,16 @@
+ul {
+  padding: 8px;
+  list-style-type: none;
+  li{
+    display: grid;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+.card {
+  color: white;
+  font-weight: bold;
+}
