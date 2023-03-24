@@ -1,12 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
+import {Component, OnInit} from '@angular/core';
 import {map} from "rxjs";
 import {GroupesService} from "../../shared/services/groupes";
 import {Groupes} from "../../models/groupes.model";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
 import {JoueursService} from "../../shared/services/joueurs";
 import {Joueurs} from "../../models/joueurs.model";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -16,45 +15,54 @@ import {Joueurs} from "../../models/joueurs.model";
 })
 export class TestsComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Joueurs>();
-  displayedColumns: string[] = ['nom', 'prenom', 'niveau', 'clicks'];
+  angularForm!: FormGroup;
 
-  groupes! : Groupes[];
-  joueurs!: Joueurs[];
-  groupe!: any[]
-  joueur!: any[]
+  newJoueur: Joueurs = new Joueurs();
+  submitted =  false;
+  groupes!: Groupes[];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  groupe!: any
+
+  id!: string;
+
 
   constructor(
+    private formBuilder: FormBuilder,
+    private joueursService: JoueursService,
     private groupesService: GroupesService,
-    private joueursService: JoueursService
-  ) {
-    this.joueursService.joueur.subscribe((docs: any[]) => {
-      this.joueur = docs;
+    private route:ActivatedRoute,
+    ) {
 
-    });
-    this.groupesService.groupe.subscribe((docs: any[]) => {
-      this.groupe = docs;
-    });
   }
 
   ngOnInit(): void {
+    this.angularForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        firstName: ['', Validators.required],
+        email: ['', Validators.required]
+      }
+    )
     this.showAllGroupes();
-    this.showAllJoueurs();
+    this.route.queryParams.subscribe(params => {
+      this.id = params['groupId'];
+      this.groupe = {...params};
+      console.log(this.groupe)
+    })
+
+
   }
 
-  showAllJoueurs(): void {
-    this.joueursService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
-        )
-      )
-    ).subscribe(data => {
-      this.joueurs = data
-    })
+
+  savePlayer(): void{
+    this.joueursService.create(this.newJoueur).then(() => {
+      console.log('Nouveau joueur créé !', this.newJoueur);
+      this.submitted = true;
+    });
+  }
+
+  newPlayer(): void {
+    this.submitted = false;
+    this.newJoueur = new Joueurs();
   }
 
   showAllGroupes(): void {
@@ -67,11 +75,6 @@ export class TestsComponent implements OnInit {
     ).subscribe(data => {
       this.groupes = data
     })
-  }
-  applyFilter(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.dataSource)
   }
 
 }

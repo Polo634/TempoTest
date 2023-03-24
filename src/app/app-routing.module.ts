@@ -15,6 +15,7 @@ import {ListeJoueursComponent} from "./components/liste-joueurs/liste-joueurs.co
 import {TestsComponent} from "./components/tests/tests.component";
 import {GroupeComponent} from "./components/groupe/groupe.component";
 import {ModifGroupeComponent} from "./components/modif-groupe/modif-groupe.component";
+import {AjouterJoueurGroupeidComponent} from "./components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component";
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path: ':id', component: JoueurComponent},
     ]},
   {path: 'ajouter-joueur', component: AjouterJoueurComponent},
+  {path: 'ajouter-joueur-groupeid', component: AjouterJoueurGroupeidComponent},
   {path: 'liste-joueurs', component: ListeJoueursComponent},
 
   {path: 'groupe', component: GroupeComponent},

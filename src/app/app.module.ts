@@ -53,6 +53,8 @@ import { environment } from '../environments/environment';
 import * as fr from '@angular/common/locales/fr'
 import {registerLocaleData} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
+import {MatTabsModule} from "@angular/material/tabs";
+import { AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component';
 
 
 
@@ -81,6 +83,7 @@ import {MatTableModule} from "@angular/material/table";
         GroupeComponent,
         ModifGroupeComponent,
         CardComponent,
+        AjouterJoueurGroupeidComponent,
 
 
     ],
@@ -108,6 +111,7 @@ import {MatTableModule} from "@angular/material/table";
         MatMenuModule,
         LayoutModule,
         MatTableModule,
+        MatTabsModule,
     ],
   providers: [
     AuthService,

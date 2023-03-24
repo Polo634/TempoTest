@@ -1,41 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import {Joueurs} from "../../models/joueurs.model";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {JoueursService} from "../../shared/services/joueurs";
+import {Joueurs} from "../../models/joueurs.model";
 import {Groupes} from "../../models/groupes.model";
-import {map} from "rxjs";
+import {JoueursService} from "../../shared/services/joueurs";
 import {GroupesService} from "../../shared/services/groupes";
+import {ActivatedRoute} from "@angular/router";
+import {map} from "rxjs";
 
 @Component({
-  selector: 'app-ajouter-joueur',
-  templateUrl: './ajouter-joueur.component.html',
-  styleUrls: ['./ajouter-joueur.component.scss']
+  selector: 'app-ajouter-joueur-groupeid',
+  templateUrl: './ajouter-joueur-groupeid.component.html',
+  styleUrls: ['./ajouter-joueur-groupeid.component.scss']
 })
-export class AjouterJoueurComponent implements OnInit {
+export class AjouterJoueurGroupeidComponent implements OnInit {
+
+
   angularForm!: FormGroup;
 
   newJoueur: Joueurs = new Joueurs();
   submitted =  false;
   groupes!: Groupes[];
 
-  selectFormControl = new FormControl('', Validators.required);
+  groupe!: any
 
-  newGroup = '';
+  id!: string;
 
-  constructor(private formBuilder: FormBuilder, private joueursService: JoueursService, private groupesService: GroupesService) {
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private joueursService: JoueursService,
+    private groupesService: GroupesService,
+    private route:ActivatedRoute,
+  ) {
 
   }
 
   ngOnInit(): void {
     this.angularForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      firstName: ['', Validators.required],
-      group: ['', Validators.required],
-      email: ['', Validators.required]
+        name: ['', Validators.required],
+        firstName: ['', Validators.required],
+        group: ['', Validators.required],
+        email: ['', Validators.required],
+        level: [1, Validators.required]
       }
     )
     this.showAllGroupes();
+    this.route.queryParams.subscribe(params => {
+      this.id = params['groupId'];
+      this.groupe = {...params};
+      console.log(this.groupe)
+    })
 
+    this.newJoueur.group = this.groupe.groupId;
 
   }
 
@@ -63,5 +79,4 @@ export class AjouterJoueurComponent implements OnInit {
       this.groupes = data
     })
   }
-
 }

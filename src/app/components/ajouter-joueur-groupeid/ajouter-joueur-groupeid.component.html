@@ -15,7 +15,7 @@
 
       <div class="main ">
 
-        <h2>Ajouter un joueur dans le {{groupe.id}}</h2>
+        <h2>Ajouter un joueur</h2>
 
         <form [formGroup]="angularForm">
 
@@ -45,10 +45,36 @@
 
             <tr>
               <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Groupe</mat-label>
+                <input matInput
+                       formControlName="group"
+                       [(ngModel)]="newJoueur.group"
+
+                />
+
+              </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td><mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Email</mat-label>
                 <input matInput
                        formControlName="email"
                        [(ngModel)]="newJoueur.email"/>
+
+              </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Niveau</mat-label>
+                <input matInput
+                       type="number"
+                       formControlName="level"
+                       [(ngModel)]="newJoueur.level"
+                       />
 
               </mat-form-field>
               </td>
@@ -71,3 +97,4 @@
     </div>
   </div>
 </div>
+

@@ -19,11 +19,60 @@
           {{currentDate | date:'fullDate'}}
         </div>
 
-        <div class="container text-center">
+        <div class="groupe">
 
 
+          <h2>Liste des groupes actifs</h2>
+          <mat-tab-group>
 
-</div>
+            <mat-tab *ngFor="let groupe of groupes" label="{{groupe.id}}" >
+              <ng-template mat-tab-label>
+                {{groupe.id}}
+                <mat-icon (click)="ajouterJoueur(groupe.id)" class="add">add_circle</mat-icon>
+              </ng-template>
+
+              <table class="table table-hover">
+                <thead>
+
+                <tr>
+
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">Niveau</th>
+                  <th scope="col">Clicks</th>
+                  <th scope="col">Modifier</th>
+                  <th scope="col">Supprimer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <ng-container *ngFor="let joueur of joueurs">
+                  <ng-container *ngIf="groupe.groupId == joueur.group">
+                    <tr>
+
+
+                      <td (click)="showDetailJoueur(joueur.id)" class="click">{{joueur.name}}</td>
+                      <td (click)="showDetailJoueur(joueur.id)" class="click">{{joueur.firstName}}</td>
+                      <td>{{joueur.level}}</td>
+                      <td>{{joueur.click_count}}</td>
+                      <td><mat-icon (click)="modifGroupeJoueur(joueur.id)">edit</mat-icon></td>
+                      <td><mat-icon (click)="supprimerJoueur(joueur.id)">delete</mat-icon></td>
+
+                    </tr>
+                  </ng-container>
+                </ng-container>
+
+
+                </tbody>
+
+              </table>
+
+            </mat-tab>
+
+          </mat-tab-group>
+
+        </div>
     </div>
   </div>
 </div>

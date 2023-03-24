@@ -30,6 +30,7 @@
 
   </mat-form-field>
   </td>
+    </tr>
 
     <tr>
       <td><mat-form-field class="example-full-width" appearance="fill">
@@ -40,13 +41,26 @@
 
       </mat-form-field>
       </td>
+  </tr>
+
+    <tr>
+      <td> <mat-form-field appearance="fill">
+        <mat-label>Groupe</mat-label>
+        <mat-select formControlName="group" [(ngModel)]="newJoueur.group" required >
+          <mat-option *ngFor="let groupe of groupes" [value]="groupe.groupId">
+            {{groupe.groupId}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </td>
+    </tr>
 
     <tr>
       <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Groupe</mat-label>
+        <mat-label>Email</mat-label>
         <input matInput
-               formControlName="group"
-         [(ngModel)]="newJoueur.group"/>
+               formControlName="email"
+               [(ngModel)]="newJoueur.email"/>
 
       </mat-form-field>
       </td>

@@ -11,55 +11,35 @@
       color: #AF1B62;
     }
 
-    .button {
-      display: inline-flex;
-      height: 30px;
-      padding: 0;
-      background: #F39200;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      overflow: hidden;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-left: 10px;
-      align-items: center;
-    }
+.groupe
+{
+  margin-left: 50px;
+  margin-top: 10px;
+  width: 70%;
+}
 
-    .button mat-icon
-    {
-      margin-left: 7px;
-    }
-    .button:hover {
-      background: lightgreen;
-    }
+table
+{
+  width: 50%;
+}
 
-    button:active {
-      background: lightgreen;
-    }
+table td
+{
+  text-align: center;
+}
 
-    .button__text{
-      display: inline-flex;
-      align-items: center;
-      padding: 0 10px;
-      color: black;
-      height: 100%;
-      font-weight: bold;
-    }
+.click
+{
+  cursor: pointer;
+}
 
+mat-icon
+{
+  cursor: pointer;
+}
 
-
-    ul {
-      padding: 8px;
-      list-style-type: none;
-      li{
-        display: grid;
-      }
-    }
-
-    a {
-      cursor: pointer;
-    }
+.add
+{
+  margin-left: 8px;
+}
 

@@ -8,6 +8,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {GroupesService} from "../../shared/services/groupes";
 import {Groupes} from "../../models/groupes.model";
 import {MatTableDataSource} from "@angular/material/table";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -89,6 +90,31 @@ export class AccueilComponent implements OnInit{
   showDetailGroupe(groupId: string | undefined) {
     this.groupesService.getById(groupId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
       this.router.navigate(['/groupe'], {queryParams: {id: groupId, ...doc?.data()}});
+      console.log(doc?.data())
+    });
+  }
+
+  supprimerJoueur(joueurId: string | undefined): void {
+    if (joueurId) {
+      this.joueursService.delete(joueurId)
+        .then(() => {
+          this.router.navigate(['/accueil']);
+          Swal.fire('Joueur supprimé avec succès !');
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  modifGroupeJoueur(joueurId: string | undefined) {
+    this.joueursService.getById(joueurId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/modif-groupe'], {queryParams: {id: joueurId, ...doc?.data()}});
+      console.log(doc?.data())
+    });
+  }
+
+  ajouterJoueur(groupId: string |undefined) {
+    this.groupesService.getById(groupId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/ajouter-joueur-groupeid'], {queryParams: {id: groupId, ...doc?.data()}});
       console.log(doc?.data())
     });
   }
