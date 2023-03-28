@@ -1,6 +1,6 @@
 export class Joueurs {
   id?: string
-  name?: string
+  name!: string
   group?: string
   level: number = 1;
   firstName?: string;

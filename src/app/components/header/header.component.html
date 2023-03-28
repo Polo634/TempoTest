@@ -1,8 +1,0 @@
-<div class="header">
-  <div class="logo"><a [routerLink]="['/accueil']"><img src="assets/logoML.webp" alt="logo Mission Locale Lille Avenirs"></a></div>
-  <div class="user" *ngIf="authService.userData as user">
-    <div class="user-name"><a [routerLink]="['/utilisateur']">{{user.displayName}}</a></div>
-    <div class="user-image"><a [routerLink]="['/utilisateur']"><img src="{{user.photoURL}}" alt="{{user.displayName}}"></a></div>
-  </div>
-</div>
-

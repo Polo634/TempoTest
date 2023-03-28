@@ -10,18 +10,25 @@
   box-sizing: border-box;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100vh; }
+body { margin: 0;
+  font-family: Muli, sans-serif }
 
 .main {
-  width: calc(100% - 200px);
-  font-size: 1.2rem
+  font-size: 1.2rem;
 }
 .main-container
 {
   display: flex;
+}
+a
+{
+  cursor: pointer;
+}
 
-  .nav {
-    min-height: calc(100vh - 70px);
+@media screen and (max-width: 640px) {
+  main
+  {
+    font-size: 0.4rem;
   }
 }

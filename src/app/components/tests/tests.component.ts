@@ -4,8 +4,10 @@ import {GroupesService} from "../../shared/services/groupes";
 import {Groupes} from "../../models/groupes.model";
 import {JoueursService} from "../../shared/services/joueurs";
 import {Joueurs} from "../../models/joueurs.model";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {Router} from "@angular/router";
+import firebase from "firebase/compat";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -15,54 +17,61 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TestsComponent implements OnInit {
 
-  angularForm!: FormGroup;
 
-  newJoueur: Joueurs = new Joueurs();
-  submitted =  false;
-  groupes!: Groupes[];
+  joueurs?: Joueurs[];
 
-  groupe!: any
+  joueur!: any[];
 
-  id!: string;
+  currentDate = new Date();
+  faPlus = faPlus;
+
+  groupes!: Groupes[]
+
+  groupe!: any[];
 
 
   constructor(
-    private formBuilder: FormBuilder,
     private joueursService: JoueursService,
     private groupesService: GroupesService,
-    private route:ActivatedRoute,
-    ) {
+    private router:Router,
+
+  ) {
+    this.joueursService.joueur.subscribe((docs: any[]) => {
+      this.joueur = docs;
+
+    });
+    this.groupesService.groupe.subscribe((docs: any[]) => {
+      this.groupe = docs;
+    });
+
 
   }
+
 
   ngOnInit(): void {
-    this.angularForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        firstName: ['', Validators.required],
-        email: ['', Validators.required]
-      }
-    )
+    this.showAllJoueurs();
     this.showAllGroupes();
-    this.route.queryParams.subscribe(params => {
-      this.id = params['groupId'];
-      this.groupe = {...params};
-      console.log(this.groupe)
+
+  }
+
+  showAllJoueurs(): void {
+    this.joueursService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.doc.id, ...c.payload.doc.data()})
+        )
+      )
+    ).subscribe(data => {
+      this.joueurs = data
     })
-
-
   }
 
 
-  savePlayer(): void{
-    this.joueursService.create(this.newJoueur).then(() => {
-      console.log('Nouveau joueur créé !', this.newJoueur);
-      this.submitted = true;
+  showDetailJoueur(joueurId: string | undefined) {
+    this.joueursService.getById(joueurId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/joueur'], {queryParams: {id: joueurId, ...doc?.data()}});
+      console.log(doc?.data())
     });
-  }
-
-  newPlayer(): void {
-    this.submitted = false;
-    this.newJoueur = new Joueurs();
   }
 
   showAllGroupes(): void {
@@ -76,6 +85,41 @@ export class TestsComponent implements OnInit {
       this.groupes = data
     })
   }
+
+
+  showDetailGroupe(groupId: string | undefined) {
+    this.groupesService.getById(groupId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/groupe'], {queryParams: {id: groupId, ...doc?.data()}});
+      console.log(doc?.data())
+    });
+  }
+
+  supprimerJoueur(joueurId: string | undefined): void {
+    if (joueurId) {
+      this.joueursService.delete(joueurId)
+        .then(() => {
+          this.router.navigate(['/accueil']);
+          Swal.fire('Joueur supprimé avec succès !');
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  modifGroupeJoueur(joueurId: string | undefined) {
+    this.joueursService.getById(joueurId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/modif-groupe'], {queryParams: {id: joueurId, ...doc?.data()}});
+      console.log(doc?.data())
+    });
+  }
+
+  ajouterJoueur(groupId: string |undefined) {
+    this.groupesService.getById(groupId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
+      this.router.navigate(['/ajouter-joueur-groupeid'], {queryParams: {id: groupId, ...doc?.data()}});
+      console.log(doc?.data())
+    });
+  }
+
+
 
 }
 

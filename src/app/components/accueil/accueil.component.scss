@@ -1,12 +1,10 @@
-.main {
-  width: calc(100% - 200px);
-}
+
 
 .date {
       display: flex;
       justify-content: flex-end;
       margin-top: 20px;
-      margin-left: 15px;
+      margin-right: 10px;
       font-weight: bold;
       color: #AF1B62;
     }
@@ -15,7 +13,7 @@
 {
   margin-left: 50px;
   margin-top: 10px;
-  width: 70%;
+  width: 95%;
 }
 
 table
@@ -43,3 +41,8 @@ mat-icon
   margin-left: 8px;
 }
 
+.banner
+{
+  text-align: center;
+  margin-top: 15px;
+}

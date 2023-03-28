@@ -20,6 +20,11 @@ import {MatListModule} from "@angular/material/list";
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatTableModule} from "@angular/material/table";
+import {MatTabsModule} from "@angular/material/tabs";
+
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 // components
@@ -31,16 +36,14 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { JoueurComponent} from "./components/joueur/joueur.component";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CardComponent } from './components/card/card.component';
 import { AjouterJoueurComponent } from './components/ajouter-joueur/ajouter-joueur.component';
-import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { TestsComponent } from './components/tests/tests.component';
 import { GroupeComponent } from './components/groupe/groupe.component';
 import { ModifGroupeComponent} from "./components/modif-groupe/modif-groupe.component";
-
+import {AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component';
+import {SidenavAMComponent} from './components/sidenav-am/sidenav-am.component';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -52,9 +55,9 @@ import {JoueursService} from "./shared/services/joueurs";
 import { environment } from '../environments/environment';
 import * as fr from '@angular/common/locales/fr'
 import {registerLocaleData} from "@angular/common";
-import {MatTableModule} from "@angular/material/table";
-import {MatTabsModule} from "@angular/material/tabs";
-import { AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component';
+import { TableJoueursAmComponent } from './components/table-joueurs-am/table-joueurs-am.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+
 
 
 
@@ -72,18 +75,17 @@ import { AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-grou
         ForgotPasswordComponent,
         VerifyEmailComponent,
         AccueilComponent,
-        HeaderComponent,
         FooterComponent,
-        SidebarComponent,
         JoueurComponent,
         CalendarComponent,
         AjouterJoueurComponent,
-        ListeJoueursComponent,
         TestsComponent,
         GroupeComponent,
         ModifGroupeComponent,
         CardComponent,
         AjouterJoueurGroupeidComponent,
+        SidenavAMComponent,
+        TableJoueursAmComponent,
 
 
     ],
@@ -112,6 +114,9 @@ import { AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-grou
         LayoutModule,
         MatTableModule,
         MatTabsModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatPaginatorModule,
     ],
   providers: [
     AuthService,

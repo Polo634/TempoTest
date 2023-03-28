@@ -7,7 +7,6 @@ import {Router} from "@angular/router";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {GroupesService} from "../../shared/services/groupes";
 import {Groupes} from "../../models/groupes.model";
-import {MatTableDataSource} from "@angular/material/table";
 import Swal from "sweetalert2";
 
 

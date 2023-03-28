@@ -17,16 +17,22 @@ export class JoueursService {
   joueursRef: AngularFirestoreCollection<Joueurs>;
   joueur: Observable<any[]>;
 
+  joueurs!: Observable<Joueurs[]>;
 
   constructor(private db: AngularFirestore, private router: Router) {
 
     this.joueursRef = db.collection(this.firestorePath);
     this.joueur = this.joueursRef.valueChanges();
+    this.joueurs = this.joueursRef.valueChanges();
 
   }
 
   getAll(): AngularFirestoreCollection<Joueurs>{
     return this.joueursRef;
+  }
+
+  getJoueurs(): Observable<Joueurs[]> {
+    return this.joueurs;
   }
 
   getById(id: string | undefined): Observable<any> {

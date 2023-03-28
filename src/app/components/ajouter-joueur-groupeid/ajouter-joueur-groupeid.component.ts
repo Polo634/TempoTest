@@ -66,6 +66,7 @@ export class AjouterJoueurGroupeidComponent implements OnInit {
   newPlayer(): void {
     this.submitted = false;
     this.newJoueur = new Joueurs();
+    this.newJoueur.group = this.groupe.groupId;
   }
 
   showAllGroupes(): void {
