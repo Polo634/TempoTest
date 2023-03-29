@@ -1,3 +1,4 @@
+
 mat-sidenav-container {
   height: 100%;
 
@@ -30,6 +31,11 @@ mat-toolbar
   top: 0;
   z-index: 1;
 }
+
+.mobile-menu
+{
+  display: none;
+}
   .logo img {
     height: 60px;
   }
@@ -49,8 +55,36 @@ mat-toolbar
     }
   }
 
-
 a {
   text-decoration: none;
   color: #000;
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+  mat-toolbar
+  {
+    padding: 5px 10px;
+    box-shadow: 2px 2px 2px #af527e;
+
+  }
+
+  .logo img {
+    height: 40px;
+  }
+  .user {
+    font-size: 0.8rem;
+    .user-image {
+      margin-left: 10px;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+
+
 }

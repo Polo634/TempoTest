@@ -11,6 +11,8 @@ export class SidenavAMComponent implements OnInit {
 
   isExpanded: boolean = false;
   showSidenav: boolean = true;
+
+
   constructor(public authService: AuthService, public router: Router) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
@@ -25,6 +27,11 @@ export class SidenavAMComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
+
+
+
+
 
 }

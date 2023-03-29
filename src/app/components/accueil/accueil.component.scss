@@ -1,13 +1,14 @@
 
 
-.date {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 20px;
-      margin-right: 10px;
-      font-weight: bold;
-      color: #AF1B62;
-    }
+.date
+{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #AF1B62;
+}
 
 .groupe
 {
@@ -26,23 +27,42 @@ table td
   text-align: center;
 }
 
-.click
+.click, mat-icon
 {
   cursor: pointer;
 }
 
-mat-icon
-{
-  cursor: pointer;
-}
 
 .add
 {
   margin-left: 8px;
 }
 
-.banner
-{
-  text-align: center;
-  margin-top: 15px;
+
+@media screen and (max-width: 480px) {
+  .date {
+
+    justify-content: center;
+    margin-top: 8px;
+
+  }
+
+  .groupe
+  {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  h2
+  {
+    text-align: center;
+  }
+
+  th,td
+  {
+    font-size: 0.7em;
+  }
+
+
 }

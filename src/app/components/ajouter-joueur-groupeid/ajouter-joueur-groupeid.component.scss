@@ -9,5 +9,23 @@ button
   background-color: #F39200;
 }
 
+@media screen and (max-width: 480px)
+{
+
+  form
+  {
+    left: 22%;
+  }
+
+  h2
+  {
+    left: 28%;
+  }
+
+  button
+  {
+    left: 15%;
+  }
+}
 
 

@@ -1,42 +1,61 @@
+<div class="main" >
+
+  <div class="ajouter-joueur-btn">
+
+    <button mat-raised-button (click)="ajouterJoueur()" class="am-btn">
+      <mat-icon>person_add</mat-icon>
+      Ajouter Joueur
+    </button>
+  </div>
+
+  <div class="filtre">
+    <mat-form-field>
+      <mat-label>Filtre</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Nom" #input>
+    </mat-form-field>
+    <mat-icon (click)="reload()">refresh</mat-icon>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-joueurs">
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> Prénom </th>
+      <td mat-cell *matCellDef="let joueur" ><a (click)="showDetailJoueur(joueur.id)">{{joueur.firstName}} </a>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let joueur"><a (click)="showDetailJoueur(joueur.id)">{{joueur.name}} </a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let joueur"> {{joueur.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="group">
+      <th mat-header-cell *matHeaderCellDef> Groupe </th>
+      <td mat-cell *matCellDef="let joueur">{{joueur.group}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef> Niveau </th>
+      <td mat-cell *matCellDef="let joueur"> {{joueur.level}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Modifier </th>
+      <td mat-cell *matCellDef="let joueur"> <mat-icon (click)="modifGroupeJoueur(joueur.id)">edit</mat-icon> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+      <td mat-cell *matCellDef="let joueur"> <mat-icon (click)="supprimerJoueur(joueur.id)">delete</mat-icon></td>
+    </ng-container>
 
 
-<div class="main">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-  <button type="button" class="button">
-    <mat-icon>person_add</mat-icon>
-    <span class="button__text"> Ajouter un joueur </span>
-
-  </button>
-
-
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col">Prénom Nom</th>
-      <th scope="col">Email</th>
-      <th scope="col">Groupe</th>
-      <th scope="col">Niveau</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let joueur of joueurs">
-      <td><a (click)="showDetailJoueur(joueur.id)">{{joueur.firstName}} {{joueur.name}} </a> </td>
-      <td>{{joueur.email}}</td>
-      <td>{{joueur.group}}</td>
-      <td>{{joueur.level}}</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary me-2" (click)="modifGroupeJoueur(joueur.id)" >Modifier le groupe</button>
-        <mat-icon>edit</mat-icon>
-        <button type="button" class="btn btn-outline-danger" (click)="supprimerJoueur(joueur.id)">Supprimer</button>
-        <mat-icon>delete</mat-icon>
-      </td>
-
-    </tr>
-
-    </tbody>
   </table>
-
 </div>
-
-
 
