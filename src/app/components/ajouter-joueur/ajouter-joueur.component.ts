@@ -5,6 +5,7 @@ import {JoueursService} from "../../shared/services/joueurs";
 import {Groupes} from "../../models/groupes.model";
 import {map} from "rxjs";
 import {GroupesService} from "../../shared/services/groupes";
+import {FunctionsService} from "../../shared/services/functionsService";
 
 @Component({
   selector: 'app-ajouter-joueur',
@@ -16,13 +17,12 @@ export class AjouterJoueurComponent implements OnInit {
 
   newJoueur: Joueurs = new Joueurs();
   submitted =  false;
-  groupes!: Groupes[];
 
-  selectFormControl = new FormControl('', Validators.required);
-
-  newGroup = '';
-
-  constructor(private formBuilder: FormBuilder, private joueursService: JoueursService, private groupesService: GroupesService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private joueursService: JoueursService,
+    public functionsService: FunctionsService
+  ) {
 
   }
 
@@ -34,7 +34,7 @@ export class AjouterJoueurComponent implements OnInit {
       email: ['', Validators.required]
       }
     )
-    this.showAllGroupes();
+    this.functionsService.showAllGroupes();
 
 
   }
@@ -52,16 +52,5 @@ export class AjouterJoueurComponent implements OnInit {
     this.newJoueur = new Joueurs();
   }
 
-  showAllGroupes(): void {
-    this.groupesService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
-        )
-      )
-    ).subscribe(data => {
-      this.groupes = data
-    })
-  }
 
 }

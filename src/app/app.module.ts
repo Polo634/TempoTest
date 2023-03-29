@@ -34,12 +34,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { JoueurComponent} from "./components/joueur/joueur.component";
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CardComponent } from './components/card/card.component';
 import { AjouterJoueurComponent } from './components/ajouter-joueur/ajouter-joueur.component';
-import { TestsComponent } from './components/tests/tests.component';
 import { GroupeComponent } from './components/groupe/groupe.component';
 import { ModifGroupeComponent} from "./components/modif-groupe/modif-groupe.component";
 import {AjouterJoueurGroupeidComponent } from './components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component';
@@ -57,6 +54,7 @@ import * as fr from '@angular/common/locales/fr'
 import {registerLocaleData} from "@angular/common";
 import { TableJoueursAmComponent } from './components/table-joueurs-am/table-joueurs-am.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { TestComponent } from './components/test/test.component';
 
 
 
@@ -77,15 +75,13 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         AccueilComponent,
         FooterComponent,
         JoueurComponent,
-        CalendarComponent,
         AjouterJoueurComponent,
-        TestsComponent,
         GroupeComponent,
         ModifGroupeComponent,
-        CardComponent,
         AjouterJoueurGroupeidComponent,
         SidenavAMComponent,
         TableJoueursAmComponent,
+        TestComponent,
 
 
     ],

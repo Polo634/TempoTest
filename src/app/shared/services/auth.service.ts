@@ -106,7 +106,6 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.router.navigate(['accueil']);
-
         this.SetUserData(result.user);
       })
       .catch((error) => {

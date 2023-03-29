@@ -4,11 +4,11 @@
 
         <div class="container text-center">
 
-                {{groupe.id}}
+                {{this.functionsService.gpe.id}}
 
 
-        <mat-list role="list" *ngFor="let joueur of joueurs">
-          <mat-list-item role="listitem" *ngIf="groupe.groupId == joueur.group">{{joueur.name}}</mat-list-item>
+        <mat-list role="list" *ngFor="let joueur of this.functionsService.joueurs">
+          <mat-list-item role="listitem" *ngIf="this.functionsService.gpe.groupId == joueur.group">{{joueur.name}}</mat-list-item>
         </mat-list>
 
       </div>

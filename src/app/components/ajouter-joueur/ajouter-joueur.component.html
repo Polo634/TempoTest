@@ -34,7 +34,7 @@
       <td> <mat-form-field appearance="fill">
         <mat-label>Groupe</mat-label>
         <mat-select formControlName="group" [(ngModel)]="newJoueur.group" required >
-          <mat-option *ngFor="let groupe of groupes" [value]="groupe.groupId">
+          <mat-option *ngFor="let groupe of this.functionsService.groupes" [value]="groupe.groupId">
             {{groupe.groupId}}
           </mat-option>
         </mat-select>

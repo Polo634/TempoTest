@@ -19,7 +19,7 @@
 
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef> Prénom </th>
-    <td mat-cell *matCellDef="let joueur" ><a (click)="showDetailJoueur(joueur.id)">{{joueur.firstName}} </a>  </td>
+    <td mat-cell *matCellDef="let joueur" ><a (click)="this.showDetailJoueur(joueur.id)">{{joueur.firstName}} </a>  </td>
   </ng-container>
 
   <ng-container matColumnDef="name">

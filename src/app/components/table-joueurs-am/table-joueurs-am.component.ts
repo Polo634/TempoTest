@@ -7,7 +7,8 @@ import firebase from "firebase/compat";
 import {GroupesService} from "../../shared/services/groupes";
 import {map} from "rxjs";
 import {Groupes} from "../../models/groupes.model";
-import {MatTable} from "@angular/material/table";
+import {FunctionsService} from "../../shared/services/functionsService";
+
 
 
 @Component({
@@ -33,6 +34,8 @@ export class TableJoueursAmComponent implements OnInit {
   ngOnInit(): void {
     this.showAllJoueurs();
   }
+
+  //pas d'utilisation du FunctionsService sinon les infos ne s'affichent pas (à améliorer si possible)
 
   showAllJoueurs(): void {
     this.joueursService.getAll().snapshotChanges().pipe(

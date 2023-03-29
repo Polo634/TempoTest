@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Joueurs} from "../../models/joueurs.model";
 import {Groupes} from "../../models/groupes.model";
 import {JoueursService} from "../../shared/services/joueurs";
 import {GroupesService} from "../../shared/services/groupes";
 import {ActivatedRoute} from "@angular/router";
 import {map} from "rxjs";
+import {FunctionsService} from "../../shared/services/functionsService";
 
 @Component({
   selector: 'app-ajouter-joueur-groupeid',
@@ -16,21 +17,17 @@ export class AjouterJoueurGroupeidComponent implements OnInit {
 
 
   angularForm!: FormGroup;
-
   newJoueur: Joueurs = new Joueurs();
   submitted =  false;
-  groupes!: Groupes[];
-
-  groupe!: any
-
   id!: string;
 
 
   constructor(
     private formBuilder: FormBuilder,
     private joueursService: JoueursService,
-    private groupesService: GroupesService,
-    private route:ActivatedRoute,
+    public functionsService: FunctionsService,
+    private route: ActivatedRoute
+
   ) {
 
   }
@@ -44,14 +41,15 @@ export class AjouterJoueurGroupeidComponent implements OnInit {
         level: [1, Validators.required]
       }
     )
-    this.showAllGroupes();
+
     this.route.queryParams.subscribe(params => {
       this.id = params['groupId'];
-      this.groupe = {...params};
-      console.log(this.groupe)
+      this.functionsService.gpe = {...params};
+      console.log(this.functionsService.gpe)
     })
+    this.functionsService.showAllGroupes();
 
-    this.newJoueur.group = this.groupe.groupId;
+    this.newJoueur.group = this.functionsService.gpe.groupId;
 
   }
 
@@ -66,18 +64,7 @@ export class AjouterJoueurGroupeidComponent implements OnInit {
   newPlayer(): void {
     this.submitted = false;
     this.newJoueur = new Joueurs();
-    this.newJoueur.group = this.groupe.groupId;
+    this.newJoueur.group = this.functionsService.gpe.groupId;
   }
 
-  showAllGroupes(): void {
-    this.groupesService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
-        )
-      )
-    ).subscribe(data => {
-      this.groupes = data
-    })
-  }
 }

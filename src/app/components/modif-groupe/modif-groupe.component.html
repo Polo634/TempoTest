@@ -13,7 +13,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Groupe</mat-label>
               <mat-select matNativeControl required [(value)]="newGroup">
-                <mat-option *ngFor="let groupe of groupes" [value]="groupe.groupId">
+                <mat-option *ngFor="let groupe of this.functionsService.groupes" [value]="groupe.groupId">
                   {{groupe.groupId}}
                 </mat-option>
               </mat-select>
@@ -28,7 +28,7 @@
               </button>
 
 
-              <button class="btn btn-warning" (click)="supprimerJoueur()">
+              <button class="btn btn-warning" (click)="this.functionsService.supprimerJoueur()">
                 Supprimer le joueur
               </button>
             </div>

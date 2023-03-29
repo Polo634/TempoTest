@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JoueursService} from "../../shared/services/joueurs";
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from 'sweetalert2';
@@ -6,6 +6,7 @@ import {GroupesService} from "../../shared/services/groupes";
 import {map} from "rxjs";
 import {Groupes} from "../../models/groupes.model";
 import {FormControl, Validators} from "@angular/forms";
+import {FunctionsService} from "../../shared/services/functionsService";
 
 
 
@@ -21,10 +22,6 @@ export class ModifGroupeComponent implements OnInit {
 
   joueurId: string | null = null;
   joueur: any;
-  groupes!: Groupes[];
-
-  groupe : Groupes[] = [];
-
   newGroup = '';
 
   selectFormControl = new FormControl('', Validators.required);
@@ -33,7 +30,7 @@ export class ModifGroupeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private joueurService: JoueursService,
-    private groupesService: GroupesService) {
+    public functionsService: FunctionsService) {
 
 
   }
@@ -45,37 +42,9 @@ export class ModifGroupeComponent implements OnInit {
       this.joueurId = params['joueurId'];
       this.joueur = {...params};
     })
-    this.showAllGroupes();
-
+    this.functionsService.showAllGroupes();
     this.newGroup = this.joueur.group;
   }
-
-
-  supprimerJoueur(): void {
-    if (this.joueur.id) {
-      this.joueurService.delete(this.joueur.id)
-        .then(() => {
-          this.router.navigate(['/accueil']);
-          Swal.fire('Joueur supprimé avec succès !');
-        })
-        .catch(err => console.log(err));
-    }
-  }
-
-
-
-  showAllGroupes(): void {
-    this.groupesService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
-        )
-      )
-    ).subscribe(data => {
-      this.groupes = data
-    })
-  }
-
 
 
   updateGroupeJoueur() {

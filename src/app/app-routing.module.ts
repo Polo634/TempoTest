@@ -11,21 +11,21 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import {AccueilComponent} from "./components/accueil/accueil.component";
 import {JoueurComponent} from "./components/joueur/joueur.component";
 import {AjouterJoueurComponent} from "./components/ajouter-joueur/ajouter-joueur.component";
-import {TestsComponent} from "./components/tests/tests.component";
 import {GroupeComponent} from "./components/groupe/groupe.component";
 import {ModifGroupeComponent} from "./components/modif-groupe/modif-groupe.component";
 import {AjouterJoueurGroupeidComponent} from "./components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component";
 import {TableJoueursAmComponent} from "./components/table-joueurs-am/table-joueurs-am.component";
+import {TestComponent} from "./components/test/test.component";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
-  { path: 'sign-in', component: SignInComponent },
+  {path: '', redirectTo: '/sign-in', pathMatch: 'full'},
+  { path: 'sign-in', component: SignInComponent},
+  { path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard]},
   { path: 'register-user', component: SignUpComponent },
   { path: 'utilisateur', component: UtilisateurComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard]},
   {path: 'joueur', component: JoueurComponent, children: [
       {path: ':id', component: JoueurComponent},
     ]},
@@ -33,10 +33,9 @@ const routes: Routes = [
   {path: 'ajouter-joueur-groupeid', component: AjouterJoueurGroupeidComponent},
   {path: 'liste-joueurs', component: TableJoueursAmComponent},
   {path : 'modif-groupe', component: ModifGroupeComponent},
-
   {path: 'groupe', component: GroupeComponent},
 
-  {path: 'tests', component: TestsComponent},
+  {path: 'test', component: TestComponent}
 
 ];
 
