@@ -17,6 +17,8 @@ import {AngularMaterialModule} from "./angular-material/angular-material.module"
 // routing
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import {InscriptionModule} from "./inscription/inscription.module";
+import {UserModule} from "./user/user.module";
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { environment } from '../environments/environment';
         LayoutModule,
         CoreModule,
         ConnexionModule,
+        InscriptionModule,
+        UserModule,
         AppRoutingModule
     ],
 

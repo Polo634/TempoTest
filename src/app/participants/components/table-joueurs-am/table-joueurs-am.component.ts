@@ -47,7 +47,7 @@ export class TableJoueursAmComponent implements OnInit {
       this.dataSource = data
     })
   }
-
+/*
   supprimerJoueur(joueurId: string | undefined): void {
     if (joueurId) {
       this.joueursService.delete(joueurId)
@@ -72,6 +72,8 @@ export class TableJoueursAmComponent implements OnInit {
       console.log(doc?.data())
     });
   }
+
+ */
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();

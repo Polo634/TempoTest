@@ -32,15 +32,4 @@ export class GroupesService {
     return this.groupesRef.doc(id).get();
   }
 
-  create(groupe: Groupes): any {
-    return this.groupesRef.add({...groupe});
-  }
-
-  update(id: string, data: any): Promise<void> {
-    return this.groupesRef.doc(id).update(data);
-  }
-
-
-
-
 }

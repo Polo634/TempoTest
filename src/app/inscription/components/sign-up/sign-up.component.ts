@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import {FormControl, Validators} from "@angular/forms";
 
@@ -8,13 +8,11 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./sign-up.component.scss'],
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
 
   hide = true;
   constructor(public authService: AuthService) {}
-
-  ngOnInit() {}
 
   getErrorMessage() {
     if (this.email.hasError('required')){

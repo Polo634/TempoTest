@@ -16,12 +16,8 @@ export class SidenavAMComponent implements OnInit {
   constructor(public authService: AuthService, public router: Router) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (val.url == '/' || val.url == '/sign-in' || val.url == '/register-user' || val.url == '/verify-email-address'
-          || val.url == '/forgot-password'){
-          this.showSidenav = false;
-        } else {
-          this.showSidenav = true;
-        }
+        this.showSidenav = !(val.url == '/' || val.url == '/sign-in' || val.url == '/register-user' || val.url == '/verify-email-address'
+          || val.url == '/forgot-password');
       }
     })
   }

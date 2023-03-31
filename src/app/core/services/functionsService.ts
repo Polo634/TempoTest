@@ -1,5 +1,4 @@
 import {map} from "rxjs";
-import firebase from "firebase/compat";
 import Swal from "sweetalert2";
 import {Injectable} from "@angular/core";
 import {JoueursService} from "./joueurs";
@@ -7,6 +6,7 @@ import {GroupesService} from "./groupes";
 import {Joueurs} from "../models/joueurs.model";
 import {Groupes} from "../models/groupes.model";
 import {Router} from "@angular/router";
+import firebase from "firebase/compat";
 
 
 @Injectable({
@@ -22,8 +22,6 @@ export class FunctionsService {
   jr!: any;
 
   groupes!: Groupes[]
-
-  groupe!: any[];
 
   gpe!: any;
 
@@ -66,7 +64,7 @@ showAllGroupes(): void {
   })
 }
 
-supprimerJoueurId(joueurId: string | undefined): void {
+supprimerJoueur(joueurId: string | undefined): void {
   if (joueurId) {
     this.joueursService.delete(joueurId)
       .then(() => {
@@ -76,17 +74,6 @@ supprimerJoueurId(joueurId: string | undefined): void {
       .catch(err => console.log(err));
   }
 }
-
-  supprimerJoueur(): void {
-    if (this.jr.id) {
-      this.joueursService.delete(this.jr.id)
-        .then(() => {
-          this.router.navigate(['/accueil']);
-          Swal.fire('Joueur supprimé avec succès !');
-        })
-        .catch(err => console.log(err));
-    }
-  }
 
 modifGroupeJoueur(joueurId: string | undefined) {
   this.joueursService.getById(joueurId).subscribe((doc: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData> | null) => {
