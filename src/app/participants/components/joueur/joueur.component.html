@@ -1,0 +1,35 @@
+
+      <div class="main">
+
+        <div class="container">
+          <div class="card text-center">
+            <figure>
+              <img src="../../../../assets/tempo.webp" alt="{{this.functionsService.jr.name}}">
+            </figure>
+
+            <p class="content"> Nom : {{this.functionsService.jr.name}} </p>
+            <p class="content"> Prénom : {{this.functionsService.jr.firstName}} </p>
+            <p class="content"> Email : {{this.functionsService.jr.email}} </p>
+            <p class="content"> Groupe: {{this.functionsService.jr.group}} </p>
+            <p class="content">Niveau : {{this.functionsService.jr.level}}</p>
+
+
+          <div class="buttons">
+            <button class="btn btn-outline-primary me-2" (click)="this.functionsService.modifGroupeJoueur(this.functionsService.jr.id)">
+              Changer le groupe
+            </button>
+
+
+          <button class="btn btn-warning" (click)="this.functionsService.supprimerJoueur()">
+            Supprimer le joueur
+          </button>
+          </div>
+      </div>
+        </div>
+
+<div>
+</div>
+      </div>
+
+
+

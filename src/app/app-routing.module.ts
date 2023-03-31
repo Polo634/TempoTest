@@ -1,21 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { UtilisateurComponent } from './components/utilisateur/utilisateur.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { SignInComponent } from './connexion/components/sign-in/sign-in.component';
+import { SignUpComponent } from './connexion/components/sign-up/sign-up.component';
+import { UtilisateurComponent } from './connexion/components/utilisateur/utilisateur.component';
+import { ForgotPasswordComponent } from './connexion/components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './connexion/components/verify-email/verify-email.component';
 
 // route guard
-import { AuthGuard } from './shared/guard/auth.guard';
-import {AccueilComponent} from "./components/accueil/accueil.component";
-import {JoueurComponent} from "./components/joueur/joueur.component";
-import {AjouterJoueurComponent} from "./components/ajouter-joueur/ajouter-joueur.component";
-import {GroupeComponent} from "./components/groupe/groupe.component";
-import {ModifGroupeComponent} from "./components/modif-groupe/modif-groupe.component";
-import {AjouterJoueurGroupeidComponent} from "./components/ajouter-joueur-groupeid/ajouter-joueur-groupeid.component";
-import {TableJoueursAmComponent} from "./components/table-joueurs-am/table-joueurs-am.component";
-import {TestComponent} from "./components/test/test.component";
+import { AuthGuard } from './core/guard/auth.guard';
+import {AccueilComponent} from "./core/components/accueil/accueil.component";
 
 
 const routes: Routes = [
@@ -26,16 +19,7 @@ const routes: Routes = [
   { path: 'utilisateur', component: UtilisateurComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  {path: 'joueur', component: JoueurComponent, children: [
-      {path: ':id', component: JoueurComponent},
-    ]},
-  {path: 'ajouter-joueur', component: AjouterJoueurComponent},
-  {path: 'ajouter-joueur-groupeid', component: AjouterJoueurGroupeidComponent},
-  {path: 'liste-joueurs', component: TableJoueursAmComponent},
-  {path : 'modif-groupe', component: ModifGroupeComponent},
-  {path: 'groupe', component: GroupeComponent},
-
-  {path: 'test', component: TestComponent}
+  {path: 'joueur', loadChildren: () => import('./participants/participants.module').then(m => m.ParticipantsModule) },
 
 ];
 

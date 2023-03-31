@@ -1,0 +1,12 @@
+mat-toolbar
+{
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(185,183,183,1) 100%);
+  box-shadow: 5px 5px 5px 5px #af527e;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  margin: 0px;
+}

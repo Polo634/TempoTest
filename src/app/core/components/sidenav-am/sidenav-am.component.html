@@ -1,0 +1,47 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="side" opened="isExpanded" *ngIf="showSidenav">
+    <mat-nav-list>
+
+      <mat-list-item (click)="isExpanded = !isExpanded">
+        <mat-icon mat-list-icon class="chevron-button" [ngClass]="{rotated: isExpanded}"> chevron_right </mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/accueil']">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Accueil</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['joueur/liste-joueurs']">
+        <mat-icon mat-list-icon> group </mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Liste des joueurs</span>
+      </mat-list-item>
+
+      <mat-list-item (click)="authService.SignOut()">
+        <mat-icon mat-list-icon> exit_to_app </mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Déconnexion</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <div class="logo"><a [routerLink]="['/accueil']"><img src="../../../../assets/logoML.webp" alt="logo Mission Locale Lille Avenirs"></a></div>
+      <div class="user" *ngIf="authService.userData as user">
+        <div class="user-name"><a [routerLink]="['/utilisateur']">{{user.displayName}}</a></div>
+        <div class="user-image"><a [routerLink]="['/utilisateur']"><img src="{{user.photoURL}}" alt="{{user.displayName}}"></a></div>
+      </div>
+    </mat-toolbar>
+
+
+
+
+    <router-outlet></router-outlet>
+
+    <app-footer></app-footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+

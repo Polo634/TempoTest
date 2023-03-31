@@ -10,13 +10,16 @@
   box-sizing: border-box;
 }
 
-html, body { height: 100vh; }
+html, body { min-height: 100vh; }
 body { margin: 0;
-  font-family: Muli, sans-serif }
+  font-family: Muli, sans-serif;
+}
 
 .main {
   font-size: 1.2rem;
   width: 100%;
+  height: 80%;
+  max-height: 100%;
 }
 .main-container
 {
@@ -24,6 +27,8 @@ body { margin: 0;
 }
 a
 {
+  color: #000;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -35,8 +40,7 @@ section
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  overflow-x: hidden;
+  height: calc(100vh - 80px);
 }
 
 section .mlLogo {
@@ -56,10 +60,12 @@ section .mlLogo {
   border-right: 1px solid rgba(255,255,255,0.5);
   border-radius: 20px;
   width: 500px;
+  gap: 5px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 .login-signup h2
 {
