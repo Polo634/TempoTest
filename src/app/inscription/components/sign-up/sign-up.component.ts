@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
-import {FormControl, Validators} from "@angular/forms";
+import {UntypedFormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +9,7 @@ import {FormControl, Validators} from "@angular/forms";
 })
 
 export class SignUpComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl('', [Validators.required, Validators.email]);
 
   hide = true;
   constructor(public authService: AuthService) {}

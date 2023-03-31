@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {JoueursService} from "../../../core/services/joueurs";
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from 'sweetalert2';
-import {FormControl, Validators} from "@angular/forms";
+import {UntypedFormControl, Validators} from "@angular/forms";
 import {FunctionsService} from "../../../core/services/functionsService";
 
 
@@ -21,7 +21,7 @@ export class ModifGroupeComponent implements OnInit {
   joueur: any;
   newGroup = '';
 
-  selectFormControl = new FormControl('', Validators.required);
+  selectFormControl = new UntypedFormControl('', Validators.required);
 
   constructor(
     private route: ActivatedRoute,

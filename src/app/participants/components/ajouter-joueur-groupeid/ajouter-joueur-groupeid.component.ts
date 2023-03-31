@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Joueurs} from "../../../core/models/joueurs.model";
 import {JoueursService} from "../../../core/services/joueurs";
 import {ActivatedRoute} from "@angular/router";
@@ -13,14 +13,14 @@ import {FunctionsService} from "../../../core/services/functionsService";
 export class AjouterJoueurGroupeidComponent implements OnInit {
 
 
-  angularForm!: FormGroup;
+  angularForm!: UntypedFormGroup;
   newJoueur: Joueurs = new Joueurs();
   submitted =  false;
   id!: string;
 
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private joueursService: JoueursService,
     public functionsService: FunctionsService,
     private route: ActivatedRoute
